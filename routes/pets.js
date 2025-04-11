@@ -1,12 +1,43 @@
+// routes/pets.js
 const express = require("express");
 const router = express.Router();
 const Pet = require("../models/Pet");
 
-// Danh sách thú cưng
+// Danh sách thú cưng với phân trang
 router.get("/", async (req, res) => {
   try {
-    const pets = await Pet.find().sort({ addedDate: -1 });
-    res.render("pets/index", { pets });
+    const page = parseInt(req.query.page) || 1; // Lấy số trang từ query, mặc định là 1
+    const limit = 10; // Số bản ghi mỗi trang
+    const skip = (page - 1) * limit; // Tính số bản ghi cần bỏ qua
+
+    // Đếm tổng số bản ghi
+    const totalPets = await Pet.countDocuments();
+    // Lấy danh sách thú cưng cho trang hiện tại
+    const pets = await Pet.find()
+      .sort({ addedDate: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    // Tính tổng số trang
+    const totalPages = Math.ceil(totalPets / limit);
+
+    // Tính start và end cho thông tin "Hiển thị X đến Y trong Z"
+    const start = totalPets > 0 ? skip + 1 : 0; // Nếu không có bản ghi, start = 0
+    const end = Math.min(skip + limit, totalPets);
+
+    // Truyền tất cả các biến cần thiết vào template
+    res.render("pets/index", {
+      pets,
+      currentPage: page,
+      totalPages,
+      totalPets, // Tổng số bản ghi
+      start, // Bản ghi bắt đầu
+      end, // Bản ghi kết thúc
+      hasPrevPage: page > 1,
+      hasNextPage: page < totalPages,
+      prevPage: page - 1,
+      nextPage: page + 1,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");

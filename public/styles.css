@@ -1,6 +1,18 @@
-body {
-  background-color: #f8f9fa;
+.page-link svg {
+  vertical-align: middle; /* Căn giữa SVG theo chiều dọc */
+  fill: #000; /* Màu mặc định của SVG */
 }
-.container {
-  max-width: 1200px;
+
+.page-item.disabled .page-link svg {
+  fill: #6c757d; /* Màu xám khi disabled */
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none;
+  opacity: 0.6;
 }
