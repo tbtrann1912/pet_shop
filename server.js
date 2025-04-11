@@ -9,11 +9,12 @@ dotenv.config();
 const app = express();
 
 // Kết nối MongoDB
+// server.js
 mongoose
-  .connect(
-    process.env.MONGODB_URI,
-    { serverSelectionTimeoutMS: 20000 } // Tăng timeout lên 20 giây
-  )
+  .connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 30000, // Tăng timeout lên 30 giây
+    socketTimeoutMS: 45000, // Timeout cho socket
+  })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
