@@ -1,18 +1,121 @@
+:root {
+  --primary-color: #1c1853;
+  --text-color: #212529;
+  --border-radius: 12px;
+  --bg-color: #f6f6f9;
+}
+.btn-add-pet {
+  background-color: #1c1853;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+.btn-add-pet:hover {
+  background-color: #151140;
+  color: white;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+/* Các input và select */
+input,
+select {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Nút Tạo mới */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.9;
+}
+
+/* Bảng */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  background-color: white;
+  padding: 10px;
+  border-top: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.page-link {
+  color: var(--primary-color);
+  border: none;
+  background: transparent;
+  padding: 6px 10px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+.page-link:hover {
+  text-decoration: underline;
+}
+
+/* SVG icons trong page-link */
 .page-link svg {
-  vertical-align: middle; /* Căn giữa SVG theo chiều dọc */
-  fill: #000; /* Màu mặc định của SVG */
+  vertical-align: middle;
+  fill: #000;
 }
-
+.page-link:hover svg {
+  fill: var(--primary-color);
+}
 .page-item.disabled .page-link svg {
-  fill: #6c757d; /* Màu xám khi disabled */
+  fill: #6c757d;
 }
-
 .page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
 }
 
-.page-item.disabled .page-link {
-  pointer-events: none;
-  opacity: 0.6;
+/* Trạng thái Đã bán */
+td:has(.status-sold),
+.status-sold {
+  color: #6c757d;
+  font-weight: 500;
 }
