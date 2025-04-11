@@ -1,0 +1,37 @@
+<h1><%= pet.name %></h1>
+<ul class="list-group mb-3">
+  <li class="list-group-item"><strong>Tuổi:</strong> <%= pet.age %></li>
+  <li class="list-group-item"><strong>Loại:</strong> <%= pet.type %></li>
+  <li class="list-group-item"><strong>Giống:</strong> <%= pet.breed %></li>
+  <li class="list-group-item">
+    <strong>Chiều cao:</strong> <%= pet.height %> cm
+  </li>
+  <li class="list-group-item">
+    <strong>Cân nặng:</strong> <%= pet.weight %> kg
+  </li>
+  <li class="list-group-item"><strong>Màu sắc:</strong> <%= pet.color %></li>
+  <li class="list-group-item">
+    <strong>Tiêm vắc-xin:</strong> <%= pet.vaccinated %>
+  </li>
+  <li class="list-group-item">
+    <strong>Ngày thêm:</strong> <%= pet.addedDate.toLocaleDateString() %>
+  </li>
+  <li class="list-group-item">
+    <strong>Trạng thái:</strong> <%= pet.status %>
+  </li>
+</ul>
+<a href="/pets/<%= pet._id %>/edit" class="btn btn-warning">Sửa</a>
+<form
+  action="/pets/<%= pet._id %>?_method=DELETE"
+  method="POST"
+  style="display: inline"
+>
+  <button
+    type="submit"
+    class="btn btn-danger"
+    onclick="return confirm('Bạn có chắc muốn xóa?')"
+  >
+    Xóa
+  </button>
+</form>
+<a href="/pets" class="btn btn-secondary">Quay lại</a>

@@ -1,0 +1,41 @@
+<h1>Danh sách thú cưng</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <th>Loại</th>
+      <th>Giống</th>
+      <th>Trạng thái</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pets.forEach(pet => { %>
+    <tr>
+      <td><%= pet.name %></td>
+      <td><%= pet.type %></td>
+      <td><%= pet.breed %></td>
+      <td><%= pet.status %></td>
+      <td>
+        <a href="/pets/<%= pet._id %>" class="btn btn-info btn-sm">Xem</a>
+        <a href="/pets/<%= pet._id %>/edit" class="btn btn-warning btn-sm"
+          >Sửa</a
+        >
+        <form
+          action="/pets/<%= pet._id %>?_method=DELETE"
+          method="POST"
+          style="display: inline"
+        >
+          <button
+            type="submit"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Bạn có chắc muốn xóa?')"
+          >
+            Xóa
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
