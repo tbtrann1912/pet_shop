@@ -4,24 +4,43 @@
   --border-radius: 12px;
   --bg-color: #f6f6f9;
 }
-.btn-add-pet {
-  background-color: #1c1853;
-  color: white;
-  border-radius: 8px;
-  padding: 6px 12px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-.btn-add-pet:hover {
-  background-color: #151140;
-  color: white;
-}
 
 body {
   background-color: var(--bg-color);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-color);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #d1d1f5;
+}
+
+/* Nút Thêm thú cưng */
+.btn-add-pet {
+  background-color: white !important;
+  color: var(--primary-color) !important;
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid var(--primary-color); /* Thêm viền để nút nổi bật */
+}
+
+.btn-add-pet:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
 }
 
 /* Các input và select */
@@ -35,6 +54,13 @@ select {
   font-size: 14px;
 }
 
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(28, 24, 83, 0.3);
+}
+
 /* Nút Tạo mới */
 button {
   background-color: var(--primary-color);
@@ -45,6 +71,7 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
 button:hover {
   opacity: 0.9;
 }
@@ -52,9 +79,11 @@ button:hover {
 /* Bảng */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   border-radius: var(--border-radius);
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 th {
@@ -62,6 +91,7 @@ th {
   color: white;
   padding: 12px;
   text-align: left;
+  font-weight: 600;
 }
 
 td {
@@ -84,6 +114,7 @@ input[type="checkbox"] {
   justify-content: flex-end;
   margin-top: 16px;
 }
+
 .page-link {
   color: var(--primary-color);
   border: none;
@@ -92,8 +123,17 @@ input[type="checkbox"] {
   margin: 0 2px;
   cursor: pointer;
 }
+
 .page-link:hover {
-  text-decoration: underline;
+  background-color: #e6e6fa;
+  text-decoration: none;
+}
+
+.page-item.active .page-link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
 }
 
 /* SVG icons trong page-link */
@@ -101,16 +141,13 @@ input[type="checkbox"] {
   vertical-align: middle;
   fill: #000;
 }
+
 .page-link:hover svg {
   fill: var(--primary-color);
 }
+
 .page-item.disabled .page-link svg {
   fill: #6c757d;
-}
-.page-item.active .page-link {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
 }
 
 /* Trạng thái Đã bán */
